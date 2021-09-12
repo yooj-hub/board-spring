@@ -5,6 +5,8 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <style>
     li {
@@ -51,10 +53,19 @@
         border-radius: 30px;
 
     }
+    .getMargin{
+        padding-right: 30px;
+        padding-left: 10px;
+    }
+    .homeIcon {
+        color: white;
+    }
 </style>
 <body>
 <nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Home |</a>
+    <div class="getMargin">
+        <a href="#" th:href="@{/}"><i class="fas fa-home homeIcon"></i></a>
+        <a class="navbar-brand" href="#"th:href="@{/}">Home |</a>
     </div>
 </nav>
 <div class="container">

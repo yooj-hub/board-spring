@@ -8,7 +8,7 @@ import study.board.service.BulletinService;
 
 import javax.annotation.PostConstruct;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class TestDummy {
     private final BulletinService bulletinService;

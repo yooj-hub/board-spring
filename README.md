@@ -33,11 +33,15 @@
 
 ## 게시판의 기능
 
-- 게시물 추가 기능 (X) - 09/12 ~ 09/13 예정
+- 게시물 추가 기능 (09/12)
 - 게시물 수정(09/05)
 - 게시물 검색(09/12)
 - 게시물 리스트 보기(09/05)
 - 게시물 상세 보기(09/05)
+
+##### 부가 기능 추가
+
+- form 에서 field에 따른 validation 추가
 
 
 
@@ -47,3 +51,10 @@ https://yoojsblog.tistory.com/159?category=960068
 
 https://yoojsblog.tistory.com/166?category=960068
 
+https://yoojsblog.tistory.com/167
+
+
+
+## 이 토이 프로젝트를 하면서 느낀 것
+
+- 

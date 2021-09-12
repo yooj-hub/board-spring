@@ -65,7 +65,9 @@ public class BulletinService {
     }
 
     public List<BulletinListDto2> findAllBySubject(String subject) {
-        return bulletinRepository.findAllBySubject(subject).stream().map(a -> new BulletinListDto2(a.getId(), a.getSubject(),a.getAuthor())).collect(toList());
+        List<BulletinListDto2> result = bulletinRepository.findAllBySubject(subject).stream().map(a -> new BulletinListDto2(a.getId(), a.getSubject(), a.getAuthor())).collect(toList());
+        Collections.reverse(result);
+        return result;
     }
 
 
