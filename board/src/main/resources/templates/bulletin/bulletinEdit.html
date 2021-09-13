@@ -3,6 +3,7 @@
 <head th:replace="fragment/header">
 </head>
 <body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <div th:replace="fragment/navVar :: nav"></div>
 <div class="container">
     <form action="/" th:action th:object="${form}" method="post">
@@ -23,21 +24,20 @@
                 <div class="field-error" th:errors="*{content}"></div>
                 <!--            <input type="text" th:field="*{content}" class="form-control con">-->
             </div>
-<!--            <button type="submit"  class="btn btn-danger" th:onclick="|location.href='@{/board/{id}/delete(id=*{id})}'|" th:formmethod="POST">Delete</button>-->
-                        <a href="#" th:href="'javascript:del('+*{id}+')'" class="btn btn-danger" style="margin-top: 10px">Delete
-                        </a>
+            <a href="#" th:href="'javascript:del('+*{id}+')'" class="btn btn-danger" style="margin-top: 10px">Delete
+            </a>
             <button type="submit" class="btn btn-primary" style="float: right; margin-top: 10px"> Modify</button>
         </div>
     </form>
 </div>
 </body>
 <script>
+
     let del = (id) => {
         let httpRequest = new XMLHttpRequest();
         httpRequest.open("POST", "/board/" + id + "/delete");
         httpRequest.send();
-        httpRequest.open("GET", "/");
-        httpRequest.send()
+        $.get('https://localhost:8080');
         window.location.replace("/");
         alert("deleted")
     }
