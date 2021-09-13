@@ -21,7 +21,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<BulletinListDto2> bulletinListDtos = bulletinService.findAll();
+        List<BulletinListDtoV2> bulletinListDtos = bulletinService.findAll();
         model.addAttribute("bulletinListDtos", bulletinListDtos);
         model.addAttribute("search", new SearchBySubject());
         return "home/board2";
@@ -46,7 +46,7 @@ public class HomeController {
 
     @PostMapping("/board/edit/{id}")
     public String editCompleted(@PathVariable("id") Long bulletinId, @Validated @ModelAttribute(name = "form") BulletinModificationForm form, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "bulletin/bulletinEdit";
         }
         bulletinService.updateBulletin(form);
@@ -55,7 +55,7 @@ public class HomeController {
 
     @PostMapping("/board/search")
     public String search(@ModelAttribute SearchBySubject search, Model model) {
-        List<BulletinListDto2> result = bulletinService.findAllBySubject(search.getSubject());
+        List<BulletinListDtoV2> result = bulletinService.findAllBySubject(search.getSubject());
         model.addAttribute("search", new SearchBySubject());
         model.addAttribute("bulletinListDtos", result);
         return "home/board2";
@@ -69,13 +69,19 @@ public class HomeController {
     }
 
     @PostMapping("/board/add")
-    public String add(@Validated @ModelAttribute(name="form") BulletinAddForm form, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            log.info("errors={}",bindingResult);
+    public String add(@Validated @ModelAttribute(name = "form") BulletinAddForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
             return "bulletin/bulletinAddForm";
         }
         Bulletin bulletin = new Bulletin(form.getSubject(), form.getContent(), form.getAuthor());
         bulletinService.save(bulletin);
+        return "redirect:/";
+    }
+
+    @PostMapping("/board/{id}/delete")
+    public String deleteById(@PathVariable Long id) {
+        bulletinService.deleteById(id);
         return "redirect:/";
     }
 

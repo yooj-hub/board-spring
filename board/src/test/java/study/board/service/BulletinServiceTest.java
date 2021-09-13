@@ -1,18 +1,15 @@
 package study.board.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import study.board.domain.Bulletin;
-import study.board.web.BulletinListDto;
-import study.board.web.BulletinListDto2;
+import study.board.web.BulletinListDtoV2;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -42,10 +39,10 @@ class BulletinServiceTest {
         bulletinService.save(bulletin2);
 
         //when
-        List<BulletinListDto2> result = bulletinService.findAll();
+        List<BulletinListDtoV2> result = bulletinService.findAll();
 
         //then
-        assertThat(result).contains(new BulletinListDto2(bulletin1), new BulletinListDto2(bulletin2));
+        assertThat(result).contains(new BulletinListDtoV2(bulletin1), new BulletinListDtoV2(bulletin2));
     }
 
 

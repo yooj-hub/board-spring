@@ -1,90 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<head th:replace="fragment/header">
 </head>
-<style>
-    li {
-        display: flex;
-        min-height: 50px;
-        height: 50px;
-        line-height: 50px;
-        margin: 0.5rem 0;
-        padding: 0 0.9rem;
-        background: white;
-        border-radius: 5px;
-    }
-
-    #subject {
-        background: linear-gradient(to right, #6478fb, #8763fb);
-        color: chartreuse;
-        font-size: 18px;
-    }
-
-    #content {
-        background-color: #e7e7e7;
-        color: black;
-        line-height: 30px;
-        margin: 0.5rem 0;
-        padding: 1rem 0.9rem;
-        line-break: loose;
-
-    }
-
-    #contents {
-        font-size: 15pt;
-        display: block;
-        border-radius: 5px;
-    }
-
-    .modify {
-        float: right;
-    }
-
-    .k {
-        margin: 0.5rem 0;
-        padding: 1rem 0.9rem;
-        background-color: #fafafa;
-        border-radius: 30px;
-
-    }
-    .getMargin{
-        padding-right: 30px;
-        padding-left: 10px;
-    }
-    .homeIcon {
-        color: white;
-    }
-</style>
 <body>
-<nav class="navbar navbar-expand-md sticky-top navbar-dark bg-dark">
-    <div class="getMargin">
-        <a href="#" th:href="@{/}"><i class="fas fa-home homeIcon"></i></a>
-        <a class="navbar-brand" href="#"th:href="@{/}">Home |</a>
-    </div>
-</nav>
+<div th:replace="fragment/navVar :: nav"></div>
 <div class="container">
-
     <div class="k">
         <div th:object="${bullentin}">
-            <li id="subject" th:text="|subject : *{subject} by(*{author})|"></li>
+            <li id="subj" th:text="|subject : *{subject} by(*{author})|"></li>
             <div id=contents>
-                <label for="content">Content</label>
-                <p id="content" th:text="*{content}"></p>
+                <label for="cont">Content</label>
+                <p id="cont" th:text="*{content}"></p>
             </div>
             <a th:href="@{/board/edit/{id}(id=${bullentin.id})}">
                 <button class="modify btn btn-primary"> modify</button>
             </a>
         </div>
     </div>
-
-
 </div>
-
 </body>
 </html>
